@@ -3,3 +3,5 @@ dist
 src/generated
 
 .env
+
+firebase-service-account.json

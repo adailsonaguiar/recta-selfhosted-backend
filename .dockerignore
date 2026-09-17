@@ -1,0 +1,28 @@
+node_modules
+dist
+src/generated
+
+# Never bake secrets into the image (env is passed at runtime)
+.env
+.env.*
+
+.git
+.gitignore
+
+*.log
+.DS_Store
+
+# Credentials
+firebase-service-account.json
+
+# Not needed for the image
+Dockerfile
+docker-compose*.yml
+.dockerignore
+README.md
+railway.json
+railway.cron.json
+.railwayignore
+insomnia-collection.json
+insomnia-collection.yaml
+convert-to-insomnia-yaml.js
