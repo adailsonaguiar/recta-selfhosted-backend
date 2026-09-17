@@ -1,5 +1,5 @@
 services:
-  db:
+  recta_db:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
@@ -16,7 +16,7 @@ services:
       timeout: 5s
       retries: 10
 
-  app:
+  recta_app:
     build:
       context: .
     restart: unless-stopped
@@ -27,6 +27,8 @@ services:
       # DATABASE_URL is built from the POSTGRES_* vars so the app always reaches
       # the "db" service on the internal network (never "localhost").
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-recta}?schema=public
+    volumes:
+      - ./firebase-service-account.json:/app/firebase-service-account.json:ro
     ports:
       - "${PORT:-3000}:${PORT:-3000}"
     depends_on:
