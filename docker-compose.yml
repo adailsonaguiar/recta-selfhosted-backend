@@ -1,5 +1,5 @@
 services:
-  recta_db:
+  db:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
@@ -16,7 +16,7 @@ services:
       timeout: 5s
       retries: 10
 
-  recta_app:
+  app:
     build:
       context: .
     restart: unless-stopped
